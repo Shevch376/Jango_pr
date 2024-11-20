@@ -1,0 +1,17 @@
+<!-- index.html -->
+{% extends "base_generic.html" %}
+
+{% block title %}
+    Статистика книг и авторов
+{% endblock %}
+
+{% block content %}
+    <h1>Добро пожаловать на главную страницу!</h1>
+    <p>Количество книг: {{ num_books }}</p>
+    <p>Количество экземпляров книг: {{ num_instances }}</p>
+    <p>Количество доступных экземпляров книг: {{ num_instances_available }}</p>
+    <p>Количество авторов: {{ num_authors }}</p>
+    <p>Количество жанров: {{ num_genres }}</p>
+    <p>Количество книг с указанным словом "счастье": {{ num_books_with_word }}</p>
+{% endblock %}
+
