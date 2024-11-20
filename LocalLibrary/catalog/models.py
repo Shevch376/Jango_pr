@@ -1,6 +1,6 @@
 from django.db import models
-from django.db import models
 from django.urls import reverse
+
 
 class MyModelName(models.Model):
     """Типичный класс модели, производный от класса Model."""
@@ -21,6 +21,20 @@ class MyModelName(models.Model):
     def __str__(self):
         """Строка для представления объекта MyModelName (например, в административной панели и т.д.)."""
         return self.my_field_name
+
+# Create a new record using the model's constructor.
+a_record = MyModelName(my_field_name="Instance #1")
+
+# Save the object into the database.
+a_record.save()
+
+# Access model field values using Python attributes.
+print(a_record.id) #should return 1 for the first record.
+print(a_record.my_field_name) # should print 'Instance #1'
+
+# Change record by modifying the fields, then calling save().
+a_record.my_field_name="New Instance Name"
+a_record.save()
 
 class Genre(models.Model):
     """
@@ -114,4 +128,3 @@ class Author(models.Model):
         String for representing the Model object.
         """
         return '%s, %s' % (self.last_name, self.first_name)
-
