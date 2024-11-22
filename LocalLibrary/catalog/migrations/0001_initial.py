@@ -5,6 +5,10 @@ import uuid
 from django.db import migrations, models
 
 
+from django.db import migrations, models
+import uuid
+from django.conf import settings  # Импортируем настройки для доступа к модели User
+
 class Migration(migrations.Migration):
 
     initial = True
@@ -59,6 +63,7 @@ class Migration(migrations.Migration):
                 ('due_back', models.DateField(blank=True, null=True)),
                 ('status', models.CharField(blank=True, choices=[('m', 'Maintenance'), ('o', 'On loan'), ('a', 'Available'), ('r', 'Reserved')], default='m', help_text='Book availability', max_length=1)),
                 ('book', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='catalog.book')),
+                ('borrower', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, help_text='User  who borrowed the book')),
             ],
             options={
                 'ordering': ['due_back'],
